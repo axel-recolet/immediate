@@ -27,20 +27,24 @@
     "url": "git://github.com/calvinmetcalf/immediate.git"
   },
   "browser": {
-    "./lib/nextTick": false
+    "./src/nextTick": false
   },
   "bugs": "https://github.com/calvinmetcalf/immediate/issues",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
   "scripts": {
     "build": "npm run build-js && npm run uglify",
+    "rollup": "rollup -c",
     "uglify": "uglifyjs dist/immediate.js -mc > dist/immediate.min.js",
     "build-js": "browserify -s immediate ./lib/index.js | derequire > dist/immediate.js",
     "test": "jshint lib/*.js && node test/tests.js | tspec"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^15.0.0",
     "browserify": "^16.5.1",
     "derequire": "^2.1.1",
     "jshint": "^2.5.1",
+    "rollup": "^2.26.8",
     "tap-spec": "^5.0.0",
     "tape": "^4.0.0",
     "uglify-js": "^2.4.13"
